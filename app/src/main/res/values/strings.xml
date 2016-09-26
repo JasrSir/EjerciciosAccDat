@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ejercicios Tema 1</string>
+    <string name="ejercicio_1_conversor_monedas">Ejercicio 1: Conversor Monedas</string>
+    <string name="ejercicio_3_mostrar_una_web">Ejercicio 3: Mostrar una web</string>
+    <string name="ejercicio_2_cm_inch">Ejercicio 2: cm - inch</string>
+    <string name="ejercicio_4_contador_caf_s">Ejercicio 4: Contador Cafés</string>
+    <string name="ejercicio_5_libre_nombre">Ejercicio 5: Libre nombre</string>
+</resources>
