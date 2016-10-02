@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main_web"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.jasrsir.ejerciciostema1.MainWeb">
+
+    <TextView
+        android:text="@string/ingrese_la_web_a_la_que_desea_acceder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/txvTitulo" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/txvTitulo"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="31dp"
+        android:id="@+id/edtWeb"
+        android:text="@string/url_o_web"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:text="@string/acceder_a_la_p_gina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
+        android:id="@+id/btnAccederWeb"
+        android:layout_below="@+id/edtWeb"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

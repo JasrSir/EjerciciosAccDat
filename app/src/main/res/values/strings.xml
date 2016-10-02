@@ -5,4 +5,17 @@
     <string name="ejercicio_2_cm_inch">Ejercicio 2: cm - inch</string>
     <string name="ejercicio_4_contador_caf_s">Ejercicio 4: Contador Cafés</string>
     <string name="ejercicio_5_libre_nombre">Ejercicio 5: Libre nombre</string>
+    <string name="dolares">Dólares</string>
+    <string name="numDolar">$</string>
+    <string name="numEuro">€</string>
+    <string name="dolar_a_euro">Dólar a Euro</string>
+    <string name="euro_a_dolar">Euro a Dólar</string>
+    <string name="convertir">Convertir</string>
+    <string name="cambio">1.00</string>
+    <string name="Convierte">Pasar Medida</string>
+    <string name="inch_cms"><![CDATA[Inch -> Cms]]></string>
+    <string name="cms_inch"><![CDATA[Cms -> Inch]]></string>
+    <string name="url_o_web">url o web</string>
+    <string name="acceder_a_la_p_gina">Acceder a la página</string>
+    <string name="ingrese_la_web_a_la_que_desea_acceder">Ingrese la WEB a la que desea acceder</string>
 </resources>
