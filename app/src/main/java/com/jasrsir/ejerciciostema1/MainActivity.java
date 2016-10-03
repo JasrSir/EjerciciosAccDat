@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btnEjer3:
-                intent = new Intent(MainActivity.this, MainWeb.class);
+                intent = new Intent(MainActivity.this, VisorWeb.class);
                 startActivity(intent);
                 break;
             case R.id.btnEjer4:

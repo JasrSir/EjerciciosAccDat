@@ -20,8 +20,8 @@
         <activity android:name=".MainConversorMoneda" />
         <activity android:name=".MainConversorMedida" />
         <activity android:name=".MainWeb" />
-        <activity android:name=".WebView"/>
-
+        <activity android:name=".WebView" />
+        <activity android:name=".VisorWeb"></activity>
     </application>
 
 </manifest>

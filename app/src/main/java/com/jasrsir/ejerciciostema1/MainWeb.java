@@ -23,27 +23,30 @@ public class MainWeb extends AppCompatActivity {
         //Iniciaizamos las variables
         botonWeb = (Button) findViewById(R.id.btnAccederWeb);
         textoweb = (EditText) findViewById(R.id.edtWeb);
-
-
+        //Lo asignamos al click
 
         botonWeb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Si está mal formado la url se modifica basicamente
                 if (comprobarHttp(textoweb.getText().toString())) {
-                    Uri uri = Uri.parse(webCorrecta + textoweb.getText().toString());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);
+                    webCorrecta.concat(textoweb.getText().toString());
                 }
+                //Creamos el bundle, le introducimos la url y la mandamos a la otra actí¡ivity
+               // Bundle bundle = new Bundle();
+                // bundle.putString("url",textoweb.getText().toString());
+                //Intent intent = new Intent(MainWeb.this, VisorWeb.class);
 
-                WebView webview = new WebView(MainWeb.this);
-                setContentView(webview);
-
-
-
+                //startActivity(intent);
             }
         });
     }
 
+    /**
+     * Método que comprueba la url para que sea operativa.
+     * @param web string del editText
+     * @return true si está bien compuesta y false en otro caso
+     */
     private boolean comprobarHttp(String web){
         boolean correcto = true;
         if (web.substring(0, 3) != "http") {
