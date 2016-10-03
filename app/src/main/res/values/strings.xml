@@ -18,4 +18,12 @@
     <string name="url_o_web">url o web</string>
     <string name="acceder_a_la_p_gina">Acceder a la página</string>
     <string name="ingrese_la_web_a_la_que_desea_acceder">Ingrese la WEB a la que desea acceder</string>
+    <string name="txvNumCafe">0</string>
+    <string name="txvTiempoRestante">00:00</string>
+    <string name="btn1mas">+ 1 minuto</string>
+    <string name="btn1menos">- 1 minuto</string>
+    <string name="btnStart">Empezar cuenta atrás para encafeinarse</string>
+    <string name="txvMinutos">00</string>
+    <string name="txvSegundos">00</string>
+    <string name="swhpatras">swhPatras</string>
 </resources>

@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btnEjer4:
+                intent = new Intent(MainActivity.this, MainContaCoffee.class);
+                startActivity(intent);
                 break;
             case R.id.btnEjer5:
                 break;
