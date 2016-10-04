@@ -9,7 +9,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainWeb extends AppCompatActivity implements View.OnClickListener{
+public class MainWeb extends AppCompatActivity {
 
     //Creamos las variables de los componentes
     private Button botonWeb;
@@ -26,17 +26,18 @@ public class MainWeb extends AppCompatActivity implements View.OnClickListener{
     }
 
     //Sobreescribimos el OnClick para el unico boton
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.btnAccederWeb) {
+
+    public void getOnClick(View v) {{
+            String web = textoweb.getText().toString();
             //Si está mal formado la url se modifica basicamente
-            if (comprobarHttp(textoweb.getText().toString())) {
-                webCorrecta.concat(textoweb.getText().toString());
+            if (!comprobarHttp(web)) {
+                web = webCorrecta.concat(web);
             }
             //Creamos el bundle, le introducimos la url y la mandamos a la otra actí¡ivity
-             Bundle bundle = new Bundle();
-             bundle.putString("url",textoweb.getText().toString());
+            Bundle bundle = new Bundle();
+            bundle.putString("url",web);
             Intent intent = new Intent(MainWeb.this, VisorWeb.class);
+            intent.putExtras(bundle);
 
             startActivity(intent);
         }

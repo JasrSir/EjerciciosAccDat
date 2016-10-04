@@ -9,7 +9,8 @@ import android.webkit.WebViewClient;
 public class VisorWeb extends AppCompatActivity {
 
     private Intent intent;
-    WebView paginaweb;
+    private WebView paginaweb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +18,9 @@ public class VisorWeb extends AppCompatActivity {
         //Asignamos el WebView a lavariable y la asignamos como ciente de web por defecto.
         intent = this.getIntent();
         paginaweb = (WebView) findViewById(R.id.webv);
-        paginaweb.loadUrl(intent.getStringExtra("url"));
+        //Establecer el componente como el visor web
         paginaweb.setWebViewClient(new WebViewClient());
+        //Cargamos la url
+        paginaweb.loadUrl(intent.getStringExtra("url"));
     }
 }

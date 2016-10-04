@@ -28,6 +28,7 @@
         android:id="@+id/btnStart"
         android:layout_alignParentRight="true"
         android:textSize="14sp"
+        android:clickable="true"
         android:layout_alignParentLeft="true" />
 
     <Button
@@ -37,6 +38,7 @@
         android:id="@+id/btn1menos"
         android:textSize="18sp"
         android:layout_above="@+id/btnStart"
+        android:clickable="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="45dp" />
 
@@ -47,35 +49,16 @@
         android:id="@+id/btn1mas"
         android:textSize="18sp"
         android:layout_alignBaseline="@+id/btn1menos"
+        android:clickable="true"
         android:layout_alignBottom="@+id/btn1menos"
         android:layout_alignParentLeft="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:id="@+id/textView3"
-        android:textSize="24sp"
-        android:text='Has engullido :      "Cafeses hoy"'
-        android:layout_below="@+id/txvcofee"
-        android:layout_alignParentLeft="true" />
-
-    <TextView
-        android:text="@string/txvNumCafe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txvNumCafe"
-        android:textSize="24sp"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_centerHorizontal="true" />
 
     <TextView
         android:text="@string/txvTiempoRestante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txvTiempoRestante"
-        android:textSize="50sp"
+        android:textSize="70sp"
         android:layout_marginBottom="35dp"
         tools:text="00 : 00"
         android:layout_above="@+id/btn1menos"
@@ -87,7 +70,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/txvTiempoRest"
         android:textSize="24sp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginBottom="14dp"
         android:layout_above="@+id/txvTiempoRestante"
         android:layout_alignParentLeft="true" />
 
@@ -100,6 +83,28 @@
         android:text="@string/swhpatras"
         android:layout_above="@+id/txvTiempoRest"
         android:layout_alignRight="@+id/textView3"
-        android:layout_marginBottom="22dp" />
+        android:layout_marginBottom="11dp"
+        android:clickable="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textSize="24sp"
+        android:text="Has engullido           Cafeses hoy"
+        android:layout_above="@+id/swhPatras"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:text="@string/txvNumCafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvNumCafe"
+        android:textSize="24sp"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

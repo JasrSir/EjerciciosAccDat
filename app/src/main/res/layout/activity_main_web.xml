@@ -37,6 +37,7 @@
         android:layout_marginTop="59dp"
         android:id="@+id/btnAccederWeb"
         android:layout_below="@+id/edtWeb"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="getOnClick"/>
 
 </RelativeLayout>
