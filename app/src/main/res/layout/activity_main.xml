@@ -17,7 +17,8 @@
         android:layout_marginTop="43dp"
         android:id="@+id/btnEjer1"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="getOnClick"/>
 
     <Button
         android:text="@string/ejercicio_3_mostrar_una_web"
@@ -28,7 +29,8 @@
         android:layout_alignRight="@+id/btnEjer2"
         android:layout_alignEnd="@+id/btnEjer2"
         android:layout_alignLeft="@+id/btnEjer2"
-        android:layout_alignStart="@+id/btnEjer2" />
+        android:layout_alignStart="@+id/btnEjer2"
+        android:onClick="getOnClick"/>
 
     <Button
         android:text="@string/ejercicio_2_cm_inch"
@@ -40,7 +42,8 @@
         android:layout_alignRight="@+id/btnEjer1"
         android:layout_alignEnd="@+id/btnEjer1"
         android:layout_alignLeft="@+id/btnEjer1"
-        android:layout_alignStart="@+id/btnEjer1" />
+        android:layout_alignStart="@+id/btnEjer1"
+        android:onClick="getOnClick"/>
 
     <Button
         android:text="@string/ejercicio_4_contador_caf_s"
@@ -52,7 +55,8 @@
         android:layout_alignRight="@+id/btnEjer3"
         android:layout_alignEnd="@+id/btnEjer3"
         android:layout_alignLeft="@+id/btnEjer3"
-        android:layout_alignStart="@+id/btnEjer3" />
+        android:layout_alignStart="@+id/btnEjer3"
+        android:onClick="getOnClick"/>
 
     <Button
         android:text="@string/ejercicio_5_libre_nombre"
@@ -64,5 +68,6 @@
         android:layout_alignRight="@+id/btnEjer4"
         android:layout_alignEnd="@+id/btnEjer4"
         android:layout_alignLeft="@+id/btnEjer4"
-        android:layout_alignStart="@+id/btnEjer4" />
+        android:layout_alignStart="@+id/btnEjer4"
+        android:onClick="getOnClick"/>
 </RelativeLayout>

@@ -69,7 +69,8 @@
         android:id="@+id/btnMedida"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="103dp" />
+        android:layout_marginBottom="103dp"
+        android:onClick="getOnClick"/>
 
     <EditText
         android:layout_width="wrap_content"

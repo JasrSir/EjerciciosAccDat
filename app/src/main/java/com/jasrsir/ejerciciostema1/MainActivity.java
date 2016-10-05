@@ -13,26 +13,18 @@ import android.widget.Button;
  */
 
 //todo Activity Principal de los ejercicios.
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
-    //Creamos el objeto botón para guardar el boton pulsado
-    private Button ej1;
-    private Button ej2;
-    private Button ej3;
-    private Button ej4;
-    private Button ej5;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        inicializar();
     }
 
     //Sobrescribimos el evento onclick
-    @Override
-    public void onClick(View v) {
+    public void getOnClick(View v) {
         //creamos el intent para a siguiente actividad.
         Intent intent;
 
@@ -60,16 +52,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //Método que inicializa las variables y las asigna
-    private void inicializar(){
-        ej1 = (Button) findViewById(R.id.btnEjer1);
-        ej2 = (Button) findViewById(R.id.btnEjer2);
-        ej3 = (Button) findViewById(R.id.btnEjer3);
-        ej4 = (Button) findViewById(R.id.btnEjer4);
-        ej5 = (Button) findViewById(R.id.btnEjer5);
-        ej1.setOnClickListener(this);
-        ej2.setOnClickListener(this);
-        ej3.setOnClickListener(this);
-        ej4.setOnClickListener(this);
-        ej5.setOnClickListener(this);
-    }
+
 }

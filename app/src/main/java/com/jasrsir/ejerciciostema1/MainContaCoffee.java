@@ -13,9 +13,10 @@ import android.widget.TextView;
 import static com.jasrsir.ejerciciostema1.R.id.btn1mas;
 import static com.jasrsir.ejerciciostema1.R.id.btn1menos;
 import static com.jasrsir.ejerciciostema1.R.id.btnStart;
+import static com.jasrsir.ejerciciostema1.R.id.swhPatras;
 
 
-public class MainContaCoffee extends AppCompatActivity implements View.OnClickListener {
+public class MainContaCoffee extends AppCompatActivity {
 
     //Variables de clase
     private Button minMas;
@@ -24,6 +25,7 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
     private int numCafe;
     private int minutos;
     private int segundos;
+    private int minutosAtras;
     private TextView tiempo;
     private TextView cafeses;
     private Switch haciatras;
@@ -46,21 +48,26 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
         tiempo = (TextView) findViewById(R.id.txvTiempoRestante);
         cafeses = (TextView) findViewById(R.id.txvNumCafe);
         haciatras = (Switch) findViewById(R.id.swhPatras);
-        start.setOnClickListener(this);
-        minMenos.setOnClickListener(this);
-        minMas.setOnClickListener(this);
         numCafe = 0;
         minutos = 5;
         actualizar();
     }
 
-    @Override
-    public void onClick(View v) {
+    public void getOnClick(View v) {
         switch (v.getId()) {
             case btnStart:
+                if (haciatras.isChecked()) {
                     contaTempo = new ContadorDown(minutos * 60000, 1000);
                     contaTempo.start();
                     inicio();
+                } else {
+                    contaTempo = new ContadorDown(minutos * 60000, 1000);
+                    contaTempo.start();
+                    minutosAtras = minutos;
+                    minutos = 0;
+                    inicio();
+                }
+
                 break;
             case btn1mas:
                 if (minutos == 30) {
@@ -112,8 +119,8 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
          */
         @Override
         public void onTick(long miliSegFinal) {
-            tickTiempo();
-            actualizar();
+                tickTiempo();
+                actualizar();
         }
 
         /**
@@ -121,11 +128,13 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
          */
         @Override
         public void onFinish() {
-            AlertDialog.Builder popup = new AlertDialog.Builder(MainContaCoffee.this);
-            popup.setTitle("Fin del Tiempo");
-            popup.setMessage("Ala, ya te has puesto hasta arriba de café, Vayase a currar no máaas!");
-            popup.setPositiveButton("Sí, ya me he chutado cafeína :)", null);
-            popup.show();
+            if (numCafe <= 9) {
+                AlertDialog.Builder popup = new AlertDialog.Builder(MainContaCoffee.this);
+                popup.setTitle("Fin del Tiempo");
+                popup.setMessage("Ala, ya te has puesto hasta arriba de café, Vayase a currar no máaas!");
+                popup.setPositiveButton("Sí, ya me he chutado cafeína :)", null);
+                popup.show();
+            }
             fin();
             actualizar();
 
@@ -159,7 +168,16 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
 
         private void fin() {
             numCafe += 1;
+            if (numCafe < 10) {
+                AlertDialog.Builder popup = new AlertDialog.Builder(MainContaCoffee.this);
+                popup.setTitle("NO más cafés");
+                popup.setMessage("Creo que ya llevas suficientes cafés por hoy");
+                popup.setPositiveButton("Ya no tomo más, en serio...", null);
+                popup.show();
+            }
+
             segundos = 0;
+            minutos = 5;
             minMas.setEnabled(true);
             minMenos.setEnabled(true);
             haciatras.setEnabled(true);

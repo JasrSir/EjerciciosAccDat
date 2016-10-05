@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-public class MainConversorMedida extends AppCompatActivity implements View.OnClickListener {
+public class MainConversorMedida extends AppCompatActivity {
 
     //Creacion de variables necesarias
     private EditText centimetros;
@@ -30,14 +30,13 @@ public class MainConversorMedida extends AppCompatActivity implements View.OnCli
         cmsInch = (RadioButton) findViewById(R.id.rdbCms);
         inchCms = (RadioButton) findViewById(R.id.rdbInch);
         pasarMedida = (Button) findViewById(R.id.btnMedida);
-        pasarMedida.setOnClickListener(this);
 
         converMedida = new ConverMedida();
     }
 
 
-    @Override
-    public void onClick(View v) {
+
+    public void getOnClick(View v) {
 
         try {
             if (v == pasarMedida){

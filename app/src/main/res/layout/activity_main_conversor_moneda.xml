@@ -105,7 +105,8 @@
         android:id="@+id/button"
         android:layout_marginBottom="59dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="getOnClick"/>
 
     <EditText
         android:layout_width="wrap_content"

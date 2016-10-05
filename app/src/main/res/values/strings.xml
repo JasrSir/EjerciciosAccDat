@@ -22,7 +22,7 @@
     <string name="txvTiempoRestante">00:00</string>
     <string name="btn1mas">+ 1 minuto</string>
     <string name="btn1menos">- 1 minuto</string>
-    <string name="btnStart">Empezar cuenta atrás para encafeinarse</string>
+    <string name="btnStart">Empezar a encafeinarse</string>
     <string name="txvMinutos">00</string>
     <string name="txvSegundos">00</string>
     <string name="swhpatras">Hacia atrás</string>
