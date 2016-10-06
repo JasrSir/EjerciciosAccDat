@@ -21,28 +21,6 @@
         android:layout_alignParentRight="true"
         android:textSize="24sp" />
 
-    <Button
-        android:text="@string/btnPlantar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="27dp"
-        android:layout_marginBottom="15dp"
-        android:id="@+id/btnPlantar"
-        android:onClick=""
-        android:textSize="24sp" />
-
-    <Button
-        android:text="@string/btnStartJuego"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnPlantar"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="33dp"
-        android:id="@+id/btnStart"
-        android:textSize="24sp" />
-
     <TextView
         android:text="Jugador"
         android:layout_width="wrap_content"
@@ -72,24 +50,6 @@
         android:layout_alignBaseline="@+id/txvComputer"
         android:layout_alignBottom="@+id/txvComputer"
         android:layout_alignLeft="@+id/txvPunJug" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
-        android:id="@+id/imvC1"
-        android:layout_below="@+id/txvComputer"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@+id/txvJugador" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
-        android:id="@+id/imvC4"
-        android:layout_below="@+id/txvPunCom"
-        android:layout_alignParentRight="true"
-        android:layout_above="@+id/txvPunJug" />
 
     <TextView
         android:text="Computer / Crupier"
@@ -151,4 +111,51 @@
         android:id="@+id/imvC3"
         android:layout_alignTop="@+id/imvC2"
         android:layout_alignLeft="@+id/imvJ3" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/cardback"
+        android:id="@+id/imvC1"
+        android:layout_alignTop="@+id/imvC2"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/cardback"
+        android:id="@+id/imvC4"
+        android:layout_alignTop="@+id/imvC3"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:text="@string/btnStartJuego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnStart"
+        android:onClick="barajaOnClick"
+        android:textSize="24sp"
+        android:layout_alignBaseline="@+id/btnOtra"
+        android:layout_alignBottom="@+id/btnOtra"
+        android:layout_alignParentLeft="true" />
+
+    <Button
+        android:text="@string/btnPlantar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnPlantar"
+        android:onClick="barajaOnClick"
+        android:textSize="18sp"
+        android:layout_alignBottom="@+id/btnStart"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:text="@string/btnOtra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnOtra"
+        android:textSize="18sp"
+        android:onClick="barajaOnClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
