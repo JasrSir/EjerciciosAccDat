@@ -54,10 +54,6 @@ public class MainWeb extends AppCompatActivity {
             webCorrecta = "http://";
             correcto = false;
         }
-        else if (web.substring(0, 3) != "www."){
-            webCorrecta.concat("www.");
-            correcto = false;
-        }
         return correcto;
     }
 }
