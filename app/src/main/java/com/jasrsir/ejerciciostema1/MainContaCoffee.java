@@ -13,9 +13,10 @@ import android.widget.TextView;
 import static com.jasrsir.ejerciciostema1.R.id.btn1mas;
 import static com.jasrsir.ejerciciostema1.R.id.btn1menos;
 import static com.jasrsir.ejerciciostema1.R.id.btnStart;
+import static com.jasrsir.ejerciciostema1.R.id.swhPatras;
 
 
-public class MainContaCoffee extends AppCompatActivity implements View.OnClickListener {
+public class MainContaCoffee extends AppCompatActivity {
 
     //Variables de clase
     private Button minMas;
@@ -24,6 +25,7 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
     private int numCafe;
     private int minutos;
     private int segundos;
+    private int minutosAtras;
     private TextView tiempo;
     private TextView cafeses;
     private Switch haciatras;
@@ -46,21 +48,26 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
         tiempo = (TextView) findViewById(R.id.txvTiempoRestante);
         cafeses = (TextView) findViewById(R.id.txvNumCafe);
         haciatras = (Switch) findViewById(R.id.swhPatras);
-        start.setOnClickListener(this);
-        minMenos.setOnClickListener(this);
-        minMas.setOnClickListener(this);
         numCafe = 0;
         minutos = 5;
         actualizar();
     }
 
-    @Override
-    public void onClick(View v) {
+    public void getOnClick(View v) {
         switch (v.getId()) {
             case btnStart:
+                if (haciatras.isChecked()) {
                     contaTempo = new ContadorDown(minutos * 60000, 1000);
                     contaTempo.start();
                     inicio();
+                } else {
+                    contaTempo = new ContadorDown(minutos * 60000, 1000);
+                    contaTempo.start();
+                    minutosAtras = minutos;
+                    minutos = 0;
+                    inicio();
+                }
+
                 break;
             case btn1mas:
                 if (minutos == 30) {
@@ -99,7 +106,6 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
      */
     private class ContadorDown extends CountDownTimer {
 
-
         //Constructor por defecto
         public ContadorDown(long tiempoTotalMilis, long intervaloMili) {
             super(tiempoTotalMilis, intervaloMili);
@@ -107,13 +113,12 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
 
         /**
          * Método sobreescrito para el OnTick
-         *
          * @param miliSegFinal milisegundos hasta el fin de la cuenta
          */
         @Override
         public void onTick(long miliSegFinal) {
-            tickTiempo();
-            actualizar();
+                tickTiempo();
+                actualizar();
         }
 
         /**
@@ -121,17 +126,19 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
          */
         @Override
         public void onFinish() {
-            AlertDialog.Builder popup = new AlertDialog.Builder(MainContaCoffee.this);
-            popup.setTitle("Fin del Tiempo");
-            popup.setMessage("Ala, ya te has puesto hasta arriba de café, Vayase a currar no máaas!");
-            popup.setPositiveButton("Sí, ya me he chutado cafeína :)", null);
-            popup.show();
+            if (numCafe <= 9) {
+                AlertDialog.Builder popup = new AlertDialog.Builder(MainContaCoffee.this);
+                popup.setTitle("Fin del Tiempo");
+                popup.setMessage("Ala, ya te has puesto hasta arriba de café, Vayase a currar no máaas!");
+                popup.setPositiveButton("Sí, ya me he chutado cafeína :)", null);
+                popup.show();
+            }
             fin();
             actualizar();
 
         }
     }
-
+        //Método que cambia propiedades al iniciar el contador
         private void inicio() {
             minMas.setEnabled(false);
             minMenos.setEnabled(false);
@@ -140,6 +147,7 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
             start.setEnabled(false);
         }
 
+        //Método que cambia el tiempo restante con cada tick
         private void tickTiempo() {
             //Si el switch está activado cuenta hacia atrás, sino hacia delante
             if (haciatras.isChecked()) {
@@ -157,9 +165,19 @@ public class MainContaCoffee extends AppCompatActivity implements View.OnClickLi
             }
         }
 
+        //Método que cambia propiedades al iniciar el contador
         private void fin() {
             numCafe += 1;
+            if (numCafe == 10) {
+                AlertDialog.Builder popup = new AlertDialog.Builder(MainContaCoffee.this);
+                popup.setTitle("NO más cafés");
+                popup.setMessage("Creo que ya llevas suficientes cafés por hoy");
+                popup.setPositiveButton("Ya no tomo más, en serio...", null);
+                popup.show();
+            }
+            //Volvemos a Reestablecer los botones y tiempo
             segundos = 0;
+            minutos = 5;
             minMas.setEnabled(true);
             minMenos.setEnabled(true);
             haciatras.setEnabled(true);

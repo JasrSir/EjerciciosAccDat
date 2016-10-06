@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-public class MainConversorMoneda extends AppCompatActivity implements View.OnClickListener{
+public class MainConversorMoneda extends AppCompatActivity {
 
     //Creacion de variables necesarias
     private EditText dolares;
@@ -30,13 +30,11 @@ public class MainConversorMoneda extends AppCompatActivity implements View.OnCli
         dolarEuro = (RadioButton) findViewById(R.id.rbtnDoltoEur);
         euroDolar = (RadioButton) findViewById(R.id.rbtnEuroDolar);
         convertir = (Button) findViewById(R.id.button);
-        convertir.setOnClickListener(this);
 
         conversion = new Conversiones();
     }
 
-    @Override
-    public void onClick(View v) {
+    public void getOnClick(View v) {
 
         try {
             valorCambio = (EditText) findViewById(R.id.edtCambio);
