@@ -14,11 +14,6 @@ import android.widget.Button;
 
 //todo Activity Principal de los ejercicios.
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
-=======
-
-
->>>>>>> f9d0c3d13a4697b17d2971fabf2cf9391d03e6ea
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +50,4 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-<<<<<<< HEAD
-=======
-
-    //Método que inicializa las variables y las asigna
-
->>>>>>> f9d0c3d13a4697b17d2971fabf2cf9391d03e6ea
 }

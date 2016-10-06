@@ -168,22 +168,14 @@ public class MainContaCoffee extends AppCompatActivity {
         //Método que cambia propiedades al iniciar el contador
         private void fin() {
             numCafe += 1;
-<<<<<<< HEAD
             if (numCafe == 10) {
-=======
-            if (numCafe < 10) {
->>>>>>> f9d0c3d13a4697b17d2971fabf2cf9391d03e6ea
                 AlertDialog.Builder popup = new AlertDialog.Builder(MainContaCoffee.this);
                 popup.setTitle("NO más cafés");
                 popup.setMessage("Creo que ya llevas suficientes cafés por hoy");
                 popup.setPositiveButton("Ya no tomo más, en serio...", null);
                 popup.show();
             }
-<<<<<<< HEAD
-            //Volvemos a Reestablecer los botones y tiempo
-=======
 
->>>>>>> f9d0c3d13a4697b17d2971fabf2cf9391d03e6ea
             segundos = 0;
             minutos = 5;
             minMas.setEnabled(true);
