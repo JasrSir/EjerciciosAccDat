@@ -72,43 +72,79 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
         }
     }
 
-    //Realiza el turno de computer
-    private void turnoPc() {
-        if (computer.puntos < 5.5 && !computer.plantarse) {
-            echarCartaC();
-            comprobarGanador();
-        }else
-            computer.plantarse = true;
+
+    //Método que inicializa las variables
+    private void inicializar() {
+        comp1 = (ImageView) findViewById(R.id.imvC1);
+        comp2 = (ImageView) findViewById(R.id.imvC2);
+        comp3 = (ImageView) findViewById(R.id.imvC3);
+        jug1 = (ImageView) findViewById(R.id.imvJ1);
+        jug2 = (ImageView) findViewById(R.id.imvJ2);
+        jug3 = (ImageView) findViewById(R.id.imvJ3);
+        start = (Button) findViewById(R.id.btnStart);
+        otra = (Button) findViewById(R.id.btnOtra);
+        plantar = (Button) findViewById(R.id.btnPlantar);
+        puntosC = (TextView) findViewById(R.id.txvPunCom);
+        puntosJ = (TextView) findViewById(R.id.txvPunJug);
+
+
     }
 
-    //metodo que compueurba el ganador de la partida
-    private void comprobarGanador() {
-
-        if (computer.puntos > 7.5) {
-            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
-            popup.setTitle("HAS GANADO");
-            popup.setMessage("Has ganado, tu contrincante se ha pasado");
-            popup.setPositiveButton("Yo sabia que era el mejor!", null);
-            popup.show();
-            plantar.setEnabled(false);
-            otra.setEnabled(false);
-            start.setEnabled(true);
-            jugador.ganadas++;
-            fin();
-        } else if (computer.puntos > jugador.puntos && jugador.plantarse) {
-            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
-            popup.setTitle("Ha ganado el adversario");
-            popup.setMessage("Has perdido, tu contrincante tiene más puntos");
-            popup.setPositiveButton("Yo sabia que era el peor!", null);
-            popup.show();
-            plantar.setEnabled(false);
-            otra.setEnabled(false);
-            start.setEnabled(true);
-            computer.ganadas++;
-            fin();
-        }else if (computer.puntos < jugador.puntos && jugador.plantarse) {
-            turnoPc();
+    //Metodo que inicia la baraja, jugadores y demás variables
+    private void start() {
+        rndJ = new Random();
+        parar = new Thread();
+        baraja = null;
+        baraja = new int[] {R.drawable.b1, R.drawable.b2, R.drawable.b3, R.drawable.b4, R.drawable.b5, R.drawable.b6,
+                R.drawable.b7, R.drawable.b10, R.drawable.b11, R.drawable.b12,
+                R.drawable.c1, R.drawable.c2, R.drawable.c3, R.drawable.c4, R.drawable.c5, R.drawable.c6,
+                R.drawable.c7, R.drawable.c10, R.drawable.c11, R.drawable.c12,
+                R.drawable.o1, R.drawable.o2, R.drawable.o3, R.drawable.o4, R.drawable.o5, R.drawable.o6,
+                R.drawable.o7, R.drawable.o10, R.drawable.o11, R.drawable.o12,
+                R.drawable.e1, R.drawable.e2, R.drawable.e3, R.drawable.e4, R.drawable.e5, R.drawable.e6,
+                R.drawable.e7, R.drawable.e10, R.drawable.e11, R.drawable.e12};
+        if (jugador == null && computer == null) {
+            jugador = new Jugador();
+            computer = new Jugador();
+        } else {
+            computer.puntos = 0;
+            jugador.puntos = 0;
+            puntosC.setText(computer.ganadas);
+            puntosJ.setText(jugador.ganadas);
         }
+
+        comp1.setImageResource(R.drawable.blaanco);
+        comp2.setImageResource(R.drawable.blaanco);
+        comp3.setImageResource(R.drawable.blaanco);
+        jug1.setImageResource(R.drawable.blaanco);
+        jug2.setImageResource(R.drawable.blaanco);
+        jug3.setImageResource(R.drawable.blaanco);
+        try {
+            parar.sleep(sleep);
+        } catch (InterruptedException e) {
+        }
+        rndG = new Random();
+        turno = 0;
+    }
+
+    //método que simula la primera tirada
+    private void echarInicial() {
+        int cartaP = rndG.nextInt(baraja.length);
+        comp1.setImageResource(baraja[cartaP]);
+        computer.puntos = sacarValor(cartaP);
+        int cartaJ = rndJ.nextInt(baraja.length);
+        jug1.setImageResource(baraja[cartaJ]);
+        jugador.puntos = sacarValor(cartaJ);
+        turno++;
+    }
+
+    //Metodo que reinicia la partida
+    private void fin() {
+        puntosJ.setText(jugador.ganadas);
+        puntosC.setText(computer.ganadas);
+        plantar.setEnabled(false);
+        otra.setEnabled(false);
+        start.setEnabled(true);
     }
 
     //Método que saca una carta al Computer, y tirar si se ha plantado el jugador
@@ -166,78 +202,43 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
         }
     }
 
-    //método que simula la primera tirada
-    private void echarInicial() {
-        int cartaP = rndG.nextInt(baraja.length);
-        comp1.setImageResource(baraja[cartaP]);
-        computer.puntos = sacarValor(cartaP);
-        int cartaJ = rndJ.nextInt(baraja.length);
-        jug1.setImageResource(baraja[cartaJ]);
-        jugador.puntos = sacarValor(cartaJ);
-        turno++;
-    }
+    //metodo que compueba el ganador de la partida
+    private void comprobarGanador() {
 
-    //Método que inicializa las variables
-    private void inicializar() {
-        comp1 = (ImageView) findViewById(R.id.imvC1);
-        comp2 = (ImageView) findViewById(R.id.imvC2);
-        comp3 = (ImageView) findViewById(R.id.imvC3);
-        jug1 = (ImageView) findViewById(R.id.imvJ1);
-        jug2 = (ImageView) findViewById(R.id.imvJ2);
-        jug3 = (ImageView) findViewById(R.id.imvJ3);
-        start = (Button) findViewById(R.id.btnStart);
-        otra = (Button) findViewById(R.id.btnOtra);
-        plantar = (Button) findViewById(R.id.btnPlantar);
-        puntosC = (TextView) findViewById(R.id.txvPunCom);
-        puntosJ = (TextView) findViewById(R.id.txvPunJug);
-
-
-    }
-
-    //Metodo que inicia la baraja, jugadores y demás variables
-    private void start() {
-        rndJ = new Random();
-        parar = new Thread();
-        baraja = null;
-        baraja = new int[] {R.drawable.b1, R.drawable.b2, R.drawable.b3, R.drawable.b4, R.drawable.b5, R.drawable.b6,
-                R.drawable.b7, R.drawable.b10, R.drawable.b11, R.drawable.b12,
-                R.drawable.c1, R.drawable.c2, R.drawable.c3, R.drawable.c4, R.drawable.c5, R.drawable.c6,
-                R.drawable.c7, R.drawable.c10, R.drawable.c11, R.drawable.c12,
-                R.drawable.o1, R.drawable.o2, R.drawable.o3, R.drawable.o4, R.drawable.o5, R.drawable.o6,
-                R.drawable.o7, R.drawable.o10, R.drawable.o11, R.drawable.o12,
-                R.drawable.e1, R.drawable.e2, R.drawable.e3, R.drawable.e4, R.drawable.e5, R.drawable.e6,
-                R.drawable.e7, R.drawable.e10, R.drawable.e11, R.drawable.e12};
-        if (jugador == null && computer == null) {
-            jugador = new Jugador();
-            computer = new Jugador();
-        } else {
-            computer.puntos = 0;
-            jugador.puntos = 0;
-            puntosC.setText(computer.ganadas);
-            puntosJ.setText(jugador.ganadas);
+        if (computer.puntos > 7.5) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("HAS GANADO");
+            popup.setMessage("Has ganado, tu contrincante se ha pasado");
+            popup.setPositiveButton("Yo sabia que era el mejor!", null);
+            popup.show();
+            plantar.setEnabled(false);
+            otra.setEnabled(false);
+            start.setEnabled(true);
+            jugador.ganadas++;
+            fin();
+        } else if (computer.puntos > jugador.puntos && jugador.plantarse) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("Ha ganado el adversario");
+            popup.setMessage("Has perdido, tu contrincante tiene más puntos");
+            popup.setPositiveButton("Yo sabia que era el peor!", null);
+            popup.show();
+            plantar.setEnabled(false);
+            otra.setEnabled(false);
+            start.setEnabled(true);
+            computer.ganadas++;
+            fin();
+        }else if (computer.puntos < jugador.puntos && jugador.plantarse) {
+            turnoPc();
         }
-
-        comp1.setImageResource(R.drawable.blaanco);
-        comp2.setImageResource(R.drawable.blaanco);
-        comp3.setImageResource(R.drawable.blaanco);
-        jug1.setImageResource(R.drawable.blaanco);
-        jug2.setImageResource(R.drawable.blaanco);
-        jug3.setImageResource(R.drawable.blaanco);
-        try {
-            parar.sleep(sleep);
-        } catch (InterruptedException e) {
-        }
-        rndG = new Random();
-        turno = 0;
     }
 
-    //Metodo que reinicia la partida
-    private void fin() {
-        puntosJ.setText(jugador.ganadas);
-        puntosC.setText(computer.ganadas);
-        plantar.setEnabled(false);
-        otra.setEnabled(false);
-        start.setEnabled(true);
+    //Realiza el turno de computer
+    private void turnoPc() {
+        if (computer.puntos < 5.5 && !computer.plantarse) {
+            echarCartaC();
+            comprobarGanador();
+        }else
+            computer.plantarse = true;
     }
 
     //Método que saca el valor obtenido de la carta.
@@ -277,5 +278,4 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
         }
 
     }
-
 }

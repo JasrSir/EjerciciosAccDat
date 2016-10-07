@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import static com.jasrsir.ejerciciostema1.R.id.btn1mas;
 import static com.jasrsir.ejerciciostema1.R.id.btn1menos;
+import static com.jasrsir.ejerciciostema1.R.id.btnResetCofee;
 import static com.jasrsir.ejerciciostema1.R.id.btnStart;
 import static com.jasrsir.ejerciciostema1.R.id.swhPatras;
 
@@ -92,6 +93,8 @@ public class MainContaCoffee extends AppCompatActivity {
                 } else
                     minutos--;
                 break;
+            case btnResetCofee:
+                numCafe = 0;
         }
         actualizar();
     }

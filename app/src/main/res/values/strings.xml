@@ -31,4 +31,5 @@
     <string name="btnStartJuego">Start</string>
     <string name="txvPunCom">0</string>
     <string name="btnOtra">Otra</string>
+    <string name="btnResetCofee">Reset Cafeses</string>
 </resources>
