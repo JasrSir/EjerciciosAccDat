@@ -22,16 +22,6 @@
         android:textSize="24sp" />
 
     <TextView
-        android:text="Jugador"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="135dp"
-        android:id="@+id/txvJugador"
-        android:textSize="24sp"
-        android:layout_above="@+id/btnStart"
-        android:layout_alignParentLeft="true" />
-
-    <TextView
         android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,69 +54,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
-        android:id="@+id/imvJ2"
-        android:layout_alignTop="@+id/imvJ3"
-        android:layout_toRightOf="@+id/txvJugador" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
+        app:srcCompat="@drawable/blaanco"
         android:id="@+id/imvJ1"
         android:layout_alignTop="@+id/imvJ2"
         android:layout_alignParentLeft="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
-        android:id="@+id/imvJ4"
-        android:layout_alignTop="@+id/imvJ3"
-        android:layout_alignParentRight="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
-        android:id="@+id/imvJ3"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/txvPunJug"
-        android:layout_toLeftOf="@+id/imvJ4"
-        android:layout_marginRight="32dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
-        android:id="@+id/imvC2"
-        android:layout_below="@+id/txvComputer"
-        android:layout_toRightOf="@+id/txvJugador"
-        android:layout_marginTop="47dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
-        android:id="@+id/imvC3"
-        android:layout_alignTop="@+id/imvC2"
-        android:layout_alignLeft="@+id/imvJ3" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
-        android:id="@+id/imvC1"
-        android:layout_alignTop="@+id/imvC2"
-        android:layout_alignParentLeft="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/cardback"
-        android:id="@+id/imvC4"
-        android:layout_alignTop="@+id/imvC3"
-        android:layout_alignParentRight="true" />
 
     <Button
         android:text="@string/btnStartJuego"
@@ -158,4 +89,56 @@
         android:onClick="barajaOnClick"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/blaanco"
+        android:id="@+id/imvC3"
+        android:layout_alignTop="@+id/imvC2"
+        android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/blaanco"
+        android:id="@+id/imvC1"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/txvComputer"
+        android:layout_alignRight="@+id/imvJ1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/blaanco"
+        android:id="@+id/imvC2"
+        android:layout_alignTop="@+id/imvC1"
+        android:layout_toLeftOf="@+id/btnPlantar" />
+
+    <TextView
+        android:text="Jugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvJugador"
+        android:textSize="24sp"
+        android:layout_above="@+id/imvJ3"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/blaanco"
+        android:id="@+id/imvJ3"
+        android:layout_above="@+id/btnPlantar"
+        android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/blaanco"
+        android:id="@+id/imvJ2"
+        android:layout_above="@+id/btnStart"
+        android:layout_toLeftOf="@+id/btnPlantar" />
 </RelativeLayout>

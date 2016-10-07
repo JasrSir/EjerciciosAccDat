@@ -30,6 +30,7 @@ public class MainContaCoffee extends AppCompatActivity {
     private TextView cafeses;
     private Switch haciatras;
     private ContadorDown contaTempo;
+    private MediaPlayer sonido;
   //  MediaPlayer mp = MediaPlayer.create(this, R.raw.a);
    // mp.start();
 
@@ -50,6 +51,7 @@ public class MainContaCoffee extends AppCompatActivity {
         haciatras = (Switch) findViewById(R.id.swhPatras);
         numCafe = 0;
         minutos = 5;
+        sonido = MediaPlayer.create(MainContaCoffee.this,R.raw.descanso);
         actualizar();
     }
 
@@ -131,8 +133,9 @@ public class MainContaCoffee extends AppCompatActivity {
                 popup.setTitle("Fin del Tiempo");
                 popup.setMessage("Ala, ya te has puesto hasta arriba de café, Vayase a currar no máaas!");
                 popup.setPositiveButton("Sí, ya me he chutado cafeína :)", null);
+                sonido.start();
                 popup.show();
-            }
+            } else
             fin();
             actualizar();
 
