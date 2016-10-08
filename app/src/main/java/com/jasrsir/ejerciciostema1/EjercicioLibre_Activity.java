@@ -72,7 +72,6 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
         }
     }
 
-
     //Método que inicializa las variables
     private void inicializar() {
         comp1 = (ImageView) findViewById(R.id.imvC1);
@@ -274,16 +273,13 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
 
     //Realiza el turno de computer
     private void turnoPc() {
-        if (computer.puntos < 6 && !computer.plantarse)
-            echarCartaC();
-        else if (!computer.plantarse) {
+        if (jugador.plantarse && jugador.puntos < computer.puntos)
             computer.plantarse = true;
-            if (turno == 2) {
-                comprobarGanador();
-            }
-        }else if (computer.plantarse){
-            comprobarGanador();
-        }
+        else if (computer.puntos < 6 && !computer.plantarse)
+            echarCartaC();
+        else if (!computer.plantarse)
+            computer.plantarse = true;
+
     }
 
     //Método que saca el valor obtenido de la carta.
