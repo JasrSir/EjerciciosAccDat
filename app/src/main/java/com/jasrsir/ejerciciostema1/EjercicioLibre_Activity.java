@@ -33,7 +33,6 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
     private int turno;
     private Thread parar;
     private long sleep = 100;
-
     //endregion
 
     @Override
@@ -62,11 +61,12 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
                 jugador.plantarse = true;
                 turnoPc();
                 start.setEnabled(true);
-                turno++;
+                comprobarGanador();
                 break;
             case R.id.btnOtra:
                 echarCarta();
                 turnoPc();
+                comprobarGanador();
                 turno++;
                 break;
         }
@@ -109,8 +109,10 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
         } else {
             computer.puntos = 0;
             jugador.puntos = 0;
-            puntosC.setText(computer.ganadas);
-            puntosJ.setText(jugador.ganadas);
+            jugador.plantarse = false;
+            computer.plantarse = false;
+            puntosC.setText(String.valueOf(computer.ganadas));
+            puntosJ.setText(String.valueOf(jugador.ganadas));
         }
 
         comp1.setImageResource(R.drawable.blaanco);
@@ -140,8 +142,8 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
 
     //Metodo que reinicia la partida
     private void fin() {
-        puntosJ.setText(jugador.ganadas);
-        puntosC.setText(computer.ganadas);
+        puntosJ.setText(String.valueOf(jugador.ganadas));
+        puntosC.setText(String.valueOf(computer.ganadas));
         plantar.setEnabled(false);
         otra.setEnabled(false);
         start.setEnabled(true);
@@ -157,12 +159,9 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
 
         computer.puntos += sacarValor(cartaC);
 
-        if (jugador.plantarse && turno < 2) {
+        if (jugador.plantarse && turno < 2 && computer.puntos < 7.5) {
             turno++;
             turnoPc();
-        } else {
-            comprobarGanador();
-            comprobarGanadorP();
         }
     }
 
@@ -178,11 +177,11 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
         }
 
         jugador.puntos += sacarValor(cartaJ);
-        comprobarGanadorP();
+
     }
 
-    //Comprueba si el jugador es el ganador
-    private void comprobarGanadorP() {
+    //metodo que compueba el ganador de la partida
+    private void comprobarGanador() {
         if (jugador.puntos > 7.5) {
             AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
             popup.setTitle("Te has pasado");
@@ -190,6 +189,18 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
             popup.setPositiveButton("bueno... la próxima será.", null);
             popup.show();
             computer.ganadas++;
+            fin();
+        } else if (computer.puntos > 7.5) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("HAS GANADO");
+            popup.setMessage("Has ganado, tu contrincante se ha pasado");
+            popup.setPositiveButton("Yo sabia que era el mejor!", null);
+            popup.show();
+            jugador.ganadas++;
+            plantar.setEnabled(false);
+            otra.setEnabled(false);
+            start.setEnabled(true);
+
             fin();
         } else if (jugador.puntos == 7.5) {
             AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
@@ -199,46 +210,80 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
             popup.show();
             jugador.ganadas++;
             fin();
-        }
-    }
-
-    //metodo que compueba el ganador de la partida
-    private void comprobarGanador() {
-
-        if (computer.puntos > 7.5) {
+        } else if (computer.puntos == 7.5) {
             AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
-            popup.setTitle("HAS GANADO");
-            popup.setMessage("Has ganado, tu contrincante se ha pasado");
-            popup.setPositiveButton("Yo sabia que era el mejor!", null);
+            popup.setTitle("¡¡7 y medio para el computer!!");
+            popup.setMessage("Has perdido por goleadaaa");
+            popup.setPositiveButton("Trauma!!", null);
+            popup.show();
+            computer.ganadas++;
+            fin();
+        } else if (computer.puntos > 7.5 && jugador.puntos > 7.5) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("¡EMPATE");
+            popup.setMessage("Os habéis pasado");
+            popup.setPositiveButton("Trauma!!", null);
+            popup.show();
+            fin();
+        }else if (jugador.puntos < computer.puntos && turno == 2) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("Perdedor");
+            popup.setMessage("has perdido");
+            popup.setPositiveButton("Perfect :')", null);
+            popup.show();
+            computer.ganadas++;
+            fin();
+        }else if (jugador.puntos > computer.puntos  && turno == 2) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("Ganador");
+            popup.setMessage("+1 de destreza");
+            popup.setPositiveButton("Perfect ^^", null);
+            popup.show();
+            jugador.ganadas++;
+            fin();
+        }else if (jugador.puntos > computer.puntos  && jugador.plantarse && computer.plantarse) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("el movil se ha plantado");
+            popup.setMessage("+1 de destreza");
+            popup.setPositiveButton("Perfect ^^", null);
+            popup.show();
+            jugador.ganadas++;
+            fin();
+        }else if (jugador.puntos < computer.puntos && jugador.plantarse && computer.plantarse) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("El móvil te ha ganado");
+            popup.setMessage("os habéis plantado y has perdido");
+            popup.setPositiveButton("Perfect :')", null);
+            popup.show();
+            computer.ganadas++;
+            fin();
+        } else if (computer.puntos == jugador.puntos  && turno == 2) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("Empate técnico");
+            popup.setMessage("Habéis Empatado");
+            popup.setPositiveButton("Best IA Ever", null);
             popup.show();
             plantar.setEnabled(false);
             otra.setEnabled(false);
             start.setEnabled(true);
             jugador.ganadas++;
-            fin();
-        } else if (computer.puntos > jugador.puntos && jugador.plantarse) {
-            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
-            popup.setTitle("Ha ganado el adversario");
-            popup.setMessage("Has perdido, tu contrincante tiene más puntos");
-            popup.setPositiveButton("Yo sabia que era el peor!", null);
-            popup.show();
-            plantar.setEnabled(false);
-            otra.setEnabled(false);
-            start.setEnabled(true);
             computer.ganadas++;
             fin();
-        }else if (computer.puntos < jugador.puntos && jugador.plantarse) {
-            turnoPc();
         }
     }
 
     //Realiza el turno de computer
     private void turnoPc() {
-        if (computer.puntos < 5.5 && !computer.plantarse) {
+        if (computer.puntos < 6 && !computer.plantarse)
             echarCartaC();
-            comprobarGanador();
-        }else
+        else if (!computer.plantarse) {
             computer.plantarse = true;
+            if (turno == 2) {
+                comprobarGanador();
+            }
+        }else if (computer.plantarse){
+            comprobarGanador();
+        }
     }
 
     //Método que saca el valor obtenido de la carta.

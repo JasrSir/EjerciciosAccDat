@@ -33,17 +33,6 @@
         android:onClick="getOnClick"/>
 
     <TextView
-        android:text="@string/txvNumCafe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txvNumCafe"
-        android:textSize="24sp"
-        android:layout_marginLeft="31dp"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_toRightOf="@+id/btn1mas" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView3"
@@ -59,20 +48,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/txvTiempoRest"
         android:textSize="24sp"
-        android:layout_above="@+id/txvTiempoRestante"
+        android:layout_below="@+id/txvNumCafe"
         android:layout_alignParentLeft="true"
-        android:layout_marginBottom="28dp" />
-
-    <TextView
-        android:text="@string/txvTiempoRestante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txvTiempoRestante"
-        android:textSize="70sp"
-        android:layout_marginBottom="36dp"
-        tools:text="00 : 00"
-        android:layout_above="@+id/btn1menos"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="58dp" />
 
     <Button
         android:text="@string/btn1mas"
@@ -82,8 +60,19 @@
         android:textSize="18sp"
         android:clickable="true"
         android:onClick="getOnClick"
-        android:layout_below="@+id/txvTiempoRestante"
-        android:layout_alignParentLeft="true" />
+        android:layout_above="@+id/btn1menos"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:text="@string/btnResetCofee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnResetCofee"
+        android:onClick="getOnClick"
+        android:layout_above="@+id/btnStart"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="29dp" />
 
     <Button
         android:text="@string/btn1menos"
@@ -92,10 +81,31 @@
         android:id="@+id/btn1menos"
         android:textSize="18sp"
         android:clickable="true"
-        android:layout_marginBottom="63dp"
         android:onClick="getOnClick"
         android:layout_above="@+id/btnStart"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="14dp" />
+
+    <TextView
+        android:text="@string/txvTiempoRestante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvTiempoRestante"
+        android:textSize="70sp"
+        tools:text="00 : 00"
+        android:layout_above="@+id/btn1mas"
+        android:layout_alignParentLeft="true" />
+
+    <TextView
+        android:text="@string/txvNumCafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txvNumCafe"
+        android:textSize="24sp"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_toRightOf="@+id/btnResetCofee"
+        android:layout_marginLeft="15dp" />
 
     <Switch
         android:layout_width="wrap_content"
@@ -105,16 +115,8 @@
         android:checked="true"
         android:text="@string/swhpatras"
         android:clickable="true"
-        android:layout_alignBottom="@+id/txvTiempoRest"
-        android:layout_alignParentRight="true" />
-
-    <Button
-        android:text="@string/btnResetCofee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnStart"
-        android:id="@+id/btnResetCofee"
-        android:onClick="getOnClick"
-        android:layout_toLeftOf="@+id/swhPatras" />
+        android:layout_below="@+id/txvNumCafe"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_marginTop="16dp" />
 
 </RelativeLayout>

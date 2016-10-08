@@ -29,7 +29,7 @@ public class MainContaCoffee extends AppCompatActivity {
     private int minutosAtras;
     private TextView tiempo;
     private TextView cafeses;
-    private Switch haciatras;
+    private Switch patras;
     private ContadorDown contaTempo;
     private MediaPlayer sonido;
   //  MediaPlayer mp = MediaPlayer.create(this, R.raw.a);
@@ -48,10 +48,11 @@ public class MainContaCoffee extends AppCompatActivity {
         minMas = (Button) findViewById(btn1mas);
         minMenos = (Button) findViewById(btn1menos);
         tiempo = (TextView) findViewById(R.id.txvTiempoRestante);
+        patras = (Switch) findViewById(R.id.swhPatras);
         cafeses = (TextView) findViewById(R.id.txvNumCafe);
-        haciatras = (Switch) findViewById(R.id.swhPatras);
-        numCafe = 0;
+        numCafe = 9;
         minutos = 5;
+        segundos = 0;
         sonido = MediaPlayer.create(MainContaCoffee.this,R.raw.descanso);
         actualizar();
     }
@@ -59,7 +60,7 @@ public class MainContaCoffee extends AppCompatActivity {
     public void getOnClick(View v) {
         switch (v.getId()) {
             case btnStart:
-                if (haciatras.isChecked()) {
+                if (patras.isChecked()) {
                     contaTempo = new ContadorDown(minutos * 60000, 1000);
                     contaTempo.start();
                     inicio();
@@ -95,6 +96,7 @@ public class MainContaCoffee extends AppCompatActivity {
                 break;
             case btnResetCofee:
                 numCafe = 0;
+                start.setEnabled(true);
         }
         actualizar();
     }
@@ -131,6 +133,7 @@ public class MainContaCoffee extends AppCompatActivity {
          */
         @Override
         public void onFinish() {
+            numCafe += 1;
             if (numCafe <= 9) {
                 AlertDialog.Builder popup = new AlertDialog.Builder(MainContaCoffee.this);
                 popup.setTitle("Fin del Tiempo");
@@ -138,7 +141,7 @@ public class MainContaCoffee extends AppCompatActivity {
                 popup.setPositiveButton("Sí, ya me he chutado cafeína :)", null);
                 sonido.start();
                 popup.show();
-            } else
+            }
             fin();
             actualizar();
 
@@ -148,7 +151,7 @@ public class MainContaCoffee extends AppCompatActivity {
         private void inicio() {
             minMas.setEnabled(false);
             minMenos.setEnabled(false);
-            haciatras.setEnabled(false);
+            patras.setEnabled(false);
             start.setText("En proceso de encafeinarte");
             start.setEnabled(false);
         }
@@ -156,7 +159,7 @@ public class MainContaCoffee extends AppCompatActivity {
         //Método que cambia el tiempo restante con cada tick
         private void tickTiempo() {
             //Si el switch está activado cuenta hacia atrás, sino hacia delante
-            if (haciatras.isChecked()) {
+            if (patras.isChecked()) {
                 if (segundos == 0) {
                     minutos--;
                     segundos = 59;
@@ -173,22 +176,24 @@ public class MainContaCoffee extends AppCompatActivity {
 
         //Método que cambia propiedades al iniciar el contador
         private void fin() {
-            numCafe += 1;
+
             if (numCafe == 10) {
                 AlertDialog.Builder popup = new AlertDialog.Builder(MainContaCoffee.this);
                 popup.setTitle("NO más cafés");
                 popup.setMessage("Creo que ya llevas suficientes cafés por hoy");
                 popup.setPositiveButton("Ya no tomo más, en serio...", null);
+                sonido.start();
                 popup.show();
+                start.setEnabled(false);
+            } else{
+                start.setEnabled(true);
             }
-
             segundos = 0;
             minutos = 5;
             minMas.setEnabled(true);
             minMenos.setEnabled(true);
-            haciatras.setEnabled(true);
+            patras.setEnabled(true);
             start.setText("Empezar cuenta atrás para encafeinarse");
-            start.setEnabled(true);
             contaTempo = null;
         }
     }

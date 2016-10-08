@@ -29,17 +29,18 @@
         android:textSize="24sp"
         android:layout_alignBaseline="@+id/txvJugador"
         android:layout_alignBottom="@+id/txvJugador"
-        android:layout_alignRight="@+id/btnPlantar" />
+        android:layout_alignRight="@+id/btnPlantar"
+        android:layout_alignLeft="@+id/imvJ3" />
 
     <TextView
         android:text="@string/txvPunCom"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/txvPunCom"
         android:textSize="24sp"
         android:layout_alignBaseline="@+id/txvComputer"
         android:layout_alignBottom="@+id/txvComputer"
-        android:layout_alignLeft="@+id/txvPunJug" />
+        android:layout_alignLeft="@+id/imvC3" />
 
     <TextView
         android:text="Computer / Crupier"
