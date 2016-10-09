@@ -54,7 +54,6 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
                 start.setEnabled(false);
                 echarInicial();
                 break;
-
             case R.id.btnPlantar:
                 plantar.setEnabled(false);
                 otra.setEnabled(false);
@@ -157,7 +156,6 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
             comp3.setImageResource(baraja[cartaC]);
 
         computer.puntos += sacarValor(cartaC);
-
         if (jugador.plantarse && turno < 2 && computer.puntos < 7.5) {
             turno++;
             turnoPc();
@@ -181,7 +179,14 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
 
     //metodo que compueba el ganador de la partida
     private void comprobarGanador() {
-        if (jugador.puntos > 7.5) {
+        if (computer.puntos > 7.5 && jugador.puntos > 7.5) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
+            popup.setTitle("¡EMPATE");
+            popup.setMessage("Os habéis pasado");
+            popup.setPositiveButton("Trauma!!", null);
+            popup.show();
+            fin();
+        } else if (jugador.puntos > 7.5) {
             AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
             popup.setTitle("Te has pasado");
             popup.setMessage("Si te sirve de consuelo.. has perdido");
@@ -199,7 +204,6 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
             plantar.setEnabled(false);
             otra.setEnabled(false);
             start.setEnabled(true);
-
             fin();
         } else if (jugador.puntos == 7.5) {
             AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
@@ -216,13 +220,6 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
             popup.setPositiveButton("Trauma!!", null);
             popup.show();
             computer.ganadas++;
-            fin();
-        } else if (computer.puntos > 7.5 && jugador.puntos > 7.5) {
-            AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
-            popup.setTitle("¡EMPATE");
-            popup.setMessage("Os habéis pasado");
-            popup.setPositiveButton("Trauma!!", null);
-            popup.show();
             fin();
         }else if (jugador.puntos < computer.puntos && turno == 2) {
             AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
@@ -256,7 +253,7 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
             popup.show();
             computer.ganadas++;
             fin();
-        } else if (computer.puntos == jugador.puntos  && turno == 2) {
+        } else if (computer.puntos == jugador.puntos  && (turno == 2 || (jugador.plantarse && computer.plantarse))) {
             AlertDialog.Builder popup = new AlertDialog.Builder(EjercicioLibre_Activity.this);
             popup.setTitle("Empate técnico");
             popup.setMessage("Habéis Empatado");

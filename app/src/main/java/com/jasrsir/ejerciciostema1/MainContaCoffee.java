@@ -50,7 +50,7 @@ public class MainContaCoffee extends AppCompatActivity {
         tiempo = (TextView) findViewById(R.id.txvTiempoRestante);
         patras = (Switch) findViewById(R.id.swhPatras);
         cafeses = (TextView) findViewById(R.id.txvNumCafe);
-        numCafe = 9;
+        numCafe = 0;
         minutos = 5;
         segundos = 0;
         sonido = MediaPlayer.create(MainContaCoffee.this,R.raw.descanso);
@@ -96,7 +96,8 @@ public class MainContaCoffee extends AppCompatActivity {
                 break;
             case btnResetCofee:
                 numCafe = 0;
-                start.setEnabled(true);
+                if (contaTempo == null)
+                    start.setEnabled(true);
         }
         actualizar();
     }
