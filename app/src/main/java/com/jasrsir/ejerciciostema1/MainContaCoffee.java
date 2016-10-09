@@ -32,8 +32,6 @@ public class MainContaCoffee extends AppCompatActivity {
     private Switch patras;
     private ContadorDown contaTempo;
     private MediaPlayer sonido;
-  //  MediaPlayer mp = MediaPlayer.create(this, R.raw.a);
-   // mp.start();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +55,7 @@ public class MainContaCoffee extends AppCompatActivity {
         actualizar();
     }
 
+    //método onClick para los botones
     public void getOnClick(View v) {
         switch (v.getId()) {
             case btnStart:
@@ -148,6 +147,7 @@ public class MainContaCoffee extends AppCompatActivity {
 
         }
     }
+
         //Método que cambia propiedades al iniciar el contador
         private void inicio() {
             minMas.setEnabled(false);

@@ -34,6 +34,7 @@ public class MainConversorMoneda extends AppCompatActivity {
         conversion = new Conversiones();
     }
 
+    //Método OnClick para botones
     public void getOnClick(View v) {
 
         try {
@@ -60,12 +61,10 @@ public class MainConversorMoneda extends AppCompatActivity {
 
     }
 
-
     /**
      * Clase destinada a las conversiones
      * @author Juan Antonio Suarez Rosa.
      */
-
     public class Conversiones {
 
         //Constructor vacío

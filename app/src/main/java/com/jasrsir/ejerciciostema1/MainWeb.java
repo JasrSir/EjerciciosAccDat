@@ -26,7 +26,6 @@ public class MainWeb extends AppCompatActivity {
     }
 
     //Sobreescribimos el OnClick para el unico boton
-
     public void getOnClick(View v) {{
             String web = textoweb.getText().toString();
             //Si está mal formado la url se modifica basicamente

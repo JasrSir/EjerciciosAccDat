@@ -45,6 +45,7 @@ public class EjercicioLibre_Activity extends AppCompatActivity {
 
     }
 
+    //método Onclick para botones
     public void barajaOnClick(View v) {
         switch (v.getId()) {
             case R.id.btnStart:

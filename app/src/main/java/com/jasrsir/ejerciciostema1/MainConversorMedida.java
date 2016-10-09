@@ -34,8 +34,7 @@ public class MainConversorMedida extends AppCompatActivity {
         converMedida = new ConverMedida();
     }
 
-
-
+    //Método OnClick para botones
     public void getOnClick(View v) {
 
         try {
@@ -60,12 +59,10 @@ public class MainConversorMedida extends AppCompatActivity {
         }
     }
 
-
     /**
      * Clase destinada a las conversiones de distancia
      * @author Juan Antonio Suarez Rosa.
      */
-
     public class ConverMedida {
 
         double pulgCms = 2.54;
